@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ super() }}
+<p><a href="{{ url_for('admin.index') }}">Admin-panel</a></p>
+<hr>
+<h2>Articles list</h2>
+<img src="static/images/dead_sea2.jpg">
+<ul class="list-posts">
+    {% for p in posts %}
+    <li>
+        <p class="title"><a href="{{ url_for('show_post', alias=p.url) }}">{{ p.title }}</a></p>
+        <p class="announce">{{ p.text[:1000] | striptags }}</p>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
